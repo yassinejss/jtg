@@ -163,7 +163,7 @@ export const createServer = async (req: Request, res: Response) => {
   const isDevPanel = (process.env.PANEL_TYPE === "dev" || process.env.PORT === "3000") && !process.env.FORCE_MAIN_PANEL;
   if (!isDevPanel) {
     // If running on Main Panel, enforce the locked default runtime configured at installation
-    runtimeType = settings.defaultRuntime || "docker";
+    runtimeType = settings.defaultRuntime || "local";
   }
   if (!name || !ram || !port) {
     res.status(400).json({ error: "Missing required fields (name, ram, port)" });
@@ -180,7 +180,7 @@ export const createServer = async (req: Request, res: Response) => {
     disk: disk || 10,
     port,
     ipAlias: ipAlias || "",
-    runtimeType: runtimeType || "docker",
+    runtimeType: runtimeType || "local",
     nodeId: nodeId || "local",
     type: type || "PAPER",
     version: version || "26.3",

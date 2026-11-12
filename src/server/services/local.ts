@@ -244,7 +244,7 @@ export const startLocalServer = async (id: string, serverData: any) => {
         stdio: ["pipe", "pipe", "pipe"]
       });
     } else {
-      child = spawn(javaBin, [`-Xms${memory}G`, `-Xmx${memory}G`, "-Djline.terminal=jline.UnsupportedTerminal", "-jar", "server.jar", "nogui", "--nojline"], {
+      child = spawn(javaBin, ["-Xms128M", "-Xmx512M", "-Djline.terminal=jline.UnsupportedTerminal", "-jar", "server.jar", "nogui", "--nojline"], {
         cwd: serverPath,
         stdio: ["pipe", "pipe", "pipe"]
       });
